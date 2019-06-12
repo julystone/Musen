@@ -12,8 +12,8 @@ class CapsRead:
     def read_caps(self):
         yaml_path = CONF_DIR + r'caps.yaml'
         with open(yaml_path, 'r', encoding='utf-8') as f:
-            data = yaml.load(f)
+            data = yaml.safe_load(f)
             return data
 
 
-my_caps = CapsRead()
+my_caps = CapsRead().read_caps()
