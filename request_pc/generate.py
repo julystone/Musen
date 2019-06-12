@@ -15,9 +15,9 @@ import yaml
 
 from request_pc.common import R_r_excel
 
-file_name = "./api_test.xlsx"
+file_name = "./data/api_test.xlsx"
 sheet_name = 'Sheet1'
-yaml_file = './parms.yaml'
+yaml_file = './yaml/parms.yaml'
 
 
 def yaml_read(yamlfile):
