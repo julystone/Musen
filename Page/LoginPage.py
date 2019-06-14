@@ -22,25 +22,18 @@ class Login(Action):
     # 左侧退出键
     toolbar_left_out = ('id', 'esunny.test:id/toolbar_left_first')
     # 交易登录
-    right_login = ('text', 'esunny.test:text/交易登录')
+    right_login = ('xpath', '//*[@text="交易登录"]')
+    select_co_button = ('id', 'esunny.test:id/ed_login_activity_rl_choose_site')
+    QMX_loc = ('xpath', '//*[@text="易盛内盘 启明星（V3仿真）"]')
+    account_input_loc = ('id', 'esunny.test:id/et_login_userno')
+    password_input_loc = ('id', 'esunny.test:id/et_login_pwd')
+    confirm_loc = ('id', 'esunny.test:id/tv_login_submit')
 
-
-    def click_agree(self):
-        """点击同意按钮"""
-        self.click_button(self.agree_loc)
-
-
-    def input_username(self):
-        """输入用户名"""
-        self.click_button(self.username_loc)
-        self.clear_key(self.username_loc)
-        self.send_keys(self.username_loc, '13770873187')
-
-    def input_pwd(self):
+    def input(self, loc, content):
         """输入密码"""
-        self.click_button(self.pwd_loc)
-        self.clear_key(self.pwd_loc)
-        self.send_keys(self.pwd_loc, '57876975yang')
+        self.click_button(loc)
+        self.clear_key(loc)
+        self.send_keys(loc, content)
 
     def click_login(self):
         """点击登录按钮"""

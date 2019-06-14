@@ -1,0 +1,2 @@
+2019-06-14 20:30:06,723 | 852 | [case_login.py-->line:26] | ERROR: 'NoneType' object has no attribute 'click'
+2019-06-14 20:32:33,452 | 17400 | [case_login.py-->line:26] | ERROR: 'NoneType' object has no attribute 'click'
