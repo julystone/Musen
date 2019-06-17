@@ -1,29 +1,38 @@
-# -*- coding:utf-8 -*-
-# @Time   : 2018-11-05 19:48
-# @Author : YangWeiMin
-
 import time
 import unittest
 
+import Model
+from Model import BaseMethod
 from Page.LoginPage import Login
 from common.Mylog import my_log
 
+model = Model.estar.Common()
+
+
+# model.estar.aaa.click_button(self)
 
 class CaseLogin(Login, unittest.TestCase):
     def test_login_success(self):
         """正常登录"""
         try:
             time.sleep(2)
-            # self.swipe_windows()
-            self.click_button(super().toolbar_right)
-            self.click_button(super().right_login)
-            super().input(super().account_input_loc, 'Q1223871051')
-            super().input(super().password_input_loc, '123456')
-            self.click_button(super().confirm_loc)
+            BaseMethod.click_button(self.DUT, Model.Basic.BaseBtn.tool_bar)
+            BaseMethod.click_button_by_partial_text(self.DUT, '交易登录')
+            BaseMethod.click_button(self.DUT, Model.accountLogin.inputbar.loginCompany)
+            # self.touch_tap(700, 70)
+            # self.touch_tap(500, 150)
+            BaseMethod.click_button(self.DUT, Model.accountLogin.BaseBtn.localFuture)
+            BaseMethod.click_button(self.DUT, Model.accountLogin.BaseBtn.informalTrade)
+            while BaseMethod.find_element_by_partial_text(self.DUT, '启明星（测试）', exception=True, timeout=2) is None:
+                BaseMethod.swipe_windows(self.DUT, direction='down')
+            BaseMethod.click_button_by_partial_text(self.DUT, '启明星（测试）')
+            BaseMethod.input(self.DUT, Model.accountLogin.inputbar.loginAccount, 'Q1223871051')
+            BaseMethod.input(self.DUT, Model.accountLogin.inputbar.loginPwd, '123456')
+            BaseMethod.click_button(self.DUT, Model.accountLogin.BaseBtn.confirmBtn)
 
         except Exception as e:
-            self.getScreenShot()
             my_log.error(e)
+            BaseMethod.get_screenshots(self.DUT, )
 
 
 if __name__ == '__main__':
